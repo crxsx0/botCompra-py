@@ -8,7 +8,7 @@ import time
 #driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 #Open Browser
 options = uc.ChromeOptions()
-options.add_argument("--user-data-dir = C:/Users/cris_/Documents/botCompra-py/User Data/")
+options.add_argument("--user-data-dir = /User Data")
 options.add_argument('--profile-directory=Default')
 browser = uc.Chrome(options=options)
 
