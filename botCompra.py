@@ -1,5 +1,4 @@
 import undetected_chromedriver as uc
-from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
@@ -8,17 +7,17 @@ import time
 
 #driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 #Open Browser
-#options = webdriver.ChromeOptions()
-#option.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36")
-browser = uc.Chrome()
-time.sleep(4)
+options = uc.ChromeOptions()
+options.add_argument("--user-data-dir = C:/Users/cris_/Documents/botCompra-py/User Data/")
+options.add_argument('--profile-directory=Default')
+browser = uc.Chrome(options=options)
 
 browser.get("https://www.nike.cl/")
 time.sleep(4)
 
-botonCerrarpopUp = browser.find_element(By.XPATH, "//*[@id='home-content']/div/div[1]/div/h3")
-botonCerrarpopUp.click()
-time.sleep(4)
+#botonCerrarpopUp = browser.find_element(By.XPATH, "//*[@id='home-content']/div/div[1]/div/h3")
+#botonCerrarpopUp.click()
+#time.sleep(4)
 
 botonSNKRS = browser.find_element(By.XPATH, "//*[@id='full-menu']/ul/li[6]/a[1]")
 botonSNKRS.click()
@@ -55,4 +54,12 @@ inputEmail = browser.find_element(By.XPATH, "//*[@id='username']")
 inputEmail.send_keys("cr.hachim2.0@gmail.com")
 botonContinuar = browser.find_element(By.XPATH, "//*[@id='root']/div/div/div/div/form/div/div[4]/button")
 botonContinuar.click()
-time.sleep(40)
+time.sleep(60)
+
+inputContrasena = browser.find_element(By.XPATH, "//*[@id='password']")
+botonLoggeo = browser.find_element(By.XPATH, "//*[@id='root']/div/div/div/div[2]/form/div/div[2]/button")
+inputContrasena.send_keys("$Xrd3000$")
+botonLoggeo.click()
+time.sleep(4)
+browser.switch_to.window(ventanas[0])
+time.sleep(10000)
